@@ -1,0 +1,18 @@
+# Cloudflare Pages 缓存规则
+# 部署时自动应用，无需额外配置
+
+# WASM — 永久缓存（文件名含 hash，内容永不变）
+/assets/*.wasm
+  Cache-Control: public, max-age=31536000, immutable
+  Content-Type: application/wasm
+
+# JS/CSS — 永久缓存（Vite 构建时自动加 hash）
+/assets/*.js
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/*.css
+  Cache-Control: public, max-age=31536000, immutable
+
+# HTML — 短缓存
+/index.html
+  Cache-Control: public, max-age=3600

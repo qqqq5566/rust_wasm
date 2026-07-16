@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>在线URL编解码工具 — encodeURI decodeURI 互转</title>
+  <meta name="description" content="免费在线URL编解码工具，支持encodeURIComponent和decodeURIComponent。纯浏览器本地运行。" />
+  <meta name="keywords" content="URL编码,URL解码,encodeURI,decodeURI,在线URL工具" />
+  <link rel="canonical" href="https://image-toolbox.pages.dev/tools/url-encode.html" />
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <header class="header"><a href="/" class="back-link">← 返回工具箱</a><h1 class="header__title">⛓ URL 编解码</h1></header>
+  <main class="main tool-page">
+    <div class="tool-panel">
+      <div class="tools__grid">
+        <button class="tool-btn url-btn url-btn--active" data-dir="encode">📝 编码 (encodeURIComponent)</button>
+        <button class="tool-btn url-btn" data-dir="decode">🔓 解码 (decodeURIComponent)</button>
+      </div>
+      <textarea class="tool-textarea" id="urlInput" placeholder="输入要编码的文本或 URL…" rows="6"></textarea>
+      <textarea class="tool-textarea" id="urlOutput" placeholder="结果将显示在这里…" rows="6" readonly></textarea>
+      <button class="tool-btn tool-btn--sm" id="urlCopyBtn">📋 复制结果</button>
+    </div>
+  </main>
+  <footer class="footer"><p>Built with 🦀 Rust + 🕸 WebAssembly + ⚡ Vite</p></footer>
+  <script type="module" src="/src/tools/url-encode.js"></script>
+</body>
+</html>

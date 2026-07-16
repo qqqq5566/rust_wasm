@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>在线UUID生成器 — UUID v4批量生成/免费</title>
+  <meta name="description" content="免费在线UUID生成器，使用crypto.randomUUID批量生成UUID v4，纯浏览器本地运行。" />
+  <meta name="keywords" content="UUID生成,UUID v4,在线UUID,GUID生成器" />
+  <link rel="canonical" href="https://image-toolbox.pages.dev/tools/uuid.html" />
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <header class="header"><a href="/" class="back-link">← 返回工具箱</a><h1 class="header__title">🎲 UUID 生成器</h1></header>
+  <main class="main tool-page">
+    <div class="tool-panel">
+      <div class="param-row">
+        <span class="param-row__title">生成数量</span>
+        <input type="number" class="param-input" id="uuidCount" value="1" min="1" max="100" />
+        <button class="tool-btn" id="uuidGenBtn">🎲 生成</button>
+      </div>
+      <textarea class="tool-textarea" id="uuidOutput" placeholder="点击生成按钮…" rows="8" readonly></textarea>
+      <button class="tool-btn tool-btn--sm" id="uuidCopyBtn">📋 复制全部</button>
+    </div>
+  </main>
+  <footer class="footer"><p>Built with 🦀 Rust + 🕸 WebAssembly + ⚡ Vite</p></footer>
+  <script type="module" src="/src/tools/uuid.js"></script>
+</body>
+</html>

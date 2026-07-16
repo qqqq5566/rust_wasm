@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>在线图片处理工具 — 免费图片编辑 | 滤镜/裁剪/缩放/旋转</title>
+  <meta name="description" content="免费在线图片处理工具，无需上传，纯浏览器本地运行。支持灰度、老照片、浮雕、边缘检测等滤镜，裁剪、缩放、旋转、马赛克等变换，PNG/JPEG/WebP多格式导出。" />
+  <meta name="keywords" content="图片处理,在线图片编辑,图片滤镜,图片裁剪,图片缩放,灰度转换,马赛克,老照片效果" />
+  <link rel="canonical" href="https://image-toolbox.pages.dev/tools/image.html" />
+  <meta property="og:title" content="在线图片处理工具 — 免费图片编辑" />
+  <meta property="og:description" content="20+ 种滤镜和变换，纯浏览器本地运行，隐私安全。" />
+  <meta name="robots" content="index, follow" />
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <header class="header">
+    <a href="/" class="back-link">← 返回工具箱</a>
+    <h1 class="header__title">🖼 图片处理</h1>
+    <p class="header__subtitle">20+ 种编辑功能 · 纯浏览器本地运行 · Rust WASM 驱动</p>
+  </header>
+
+  <main class="main">
+    <section class="upload" id="uploadSection">
+      <div class="upload__zone" id="uploadZone">
+        <div class="upload__icon">📁</div>
+        <p class="upload__text">拖拽图片到此处，或 <span class="upload__link">点击选择</span></p>
+        <p class="upload__hint">支持 JPG / PNG / GIF / WebP / BMP</p>
+        <input type="file" class="upload__input" id="fileInput" accept="image/*" />
+      </div>
+    </section>
+
+    <div class="workspace" id="workspace" style="display:none;">
+      <section class="compare">
+        <div class="compare__panel">
+          <h3 class="compare__label">处理前</h3>
+          <div class="compare__image-wrap"><img class="compare__image" id="originalImg" alt="原始图片" /></div>
+        </div>
+        <div class="compare__panel">
+          <h3 class="compare__label" id="resultLabel">处理后</h3>
+          <div class="compare__image-wrap">
+            <img class="compare__image" id="processedImg" alt="处理结果" />
+            <div class="compare__placeholder" id="processedPlaceholder">点击下方操作按钮查看效果</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="info" id="infoPanel">
+        <span class="info__item">宽: <strong id="infoWidth">-</strong>px</span>
+        <span class="info__item">高: <strong id="infoHeight">-</strong>px</span>
+        <span class="info__item">格式: <strong id="infoFormat">-</strong></span>
+        <span class="info__item">色彩: <strong id="infoColor">-</strong></span>
+        <span class="info__item">大小: <strong id="infoSize">-</strong></span>
+      </section>
+
+      <section class="tools">
+        <nav class="tabs">
+          <button class="tab tab--active" data-tab="filter">🎨 滤镜</button>
+          <button class="tab" data-tab="transform">✂ 变换</button>
+          <button class="tab" data-tab="adjust">📐 调整</button>
+          <button class="tab" data-tab="export">💾 导出</button>
+        </nav>
+        <div class="tab-panel tab-panel--active" id="panel-filter">
+          <div class="tools__grid">
+            <button class="tool-btn" data-action="grayscale">🌫 灰度</button>
+            <button class="tool-btn" data-action="invert">🎞 反色</button>
+            <button class="tool-btn" data-action="sepia">📷 老照片</button>
+            <button class="tool-btn" data-action="emboss">🗿 浮雕</button>
+            <button class="tool-btn" data-action="edgeDetect">📐 边缘检测</button>
+          </div>
+          <div class="tools__sliders">
+            <div class="slider-group"><label class="slider-group__label">🔍 模糊: <span id="blurVal">0.0</span></label><input type="range" class="slider-group__input" id="blurSlider" min="0" max="100" value="0" step="1" /></div>
+            <div class="slider-group"><label class="slider-group__label">🔪 锐化: <span id="sharpenSigmaVal">1.0</span></label><input type="range" class="slider-group__input" id="sharpenSigmaSlider" min="1" max="50" value="10" step="1" /></div>
+            <div class="slider-group"><label class="slider-group__label">🎯 锐化阈值: <span id="sharpenThreshVal">0</span></label><input type="range" class="slider-group__input" id="sharpenThreshSlider" min="0" max="50" value="0" step="1" /></div>
+            <div class="slider-group"><label class="slider-group__label">🌈 色相: <span id="hueVal">0°</span></label><input type="range" class="slider-group__input" id="hueSlider" min="-180" max="180" value="0" step="1" /></div>
+          </div>
+        </div>
+        <div class="tab-panel" id="panel-transform">
+          <div class="tools__grid">
+            <button class="tool-btn" data-action="flipH">↔ 水平翻转</button>
+            <button class="tool-btn" data-action="flipV">↕ 垂直翻转</button>
+            <button class="tool-btn" data-action="rotate90">↻ 旋转90°</button>
+            <button class="tool-btn" data-action="rotate180">180°</button>
+            <button class="tool-btn" data-action="rotate270">270°</button>
+          </div>
+          <div class="param-row"><span class="param-row__title">📏 缩放</span><input type="number" class="param-input" id="resizeW" placeholder="宽(px)" /><span class="param-row__sep">×</span><input type="number" class="param-input" id="resizeH" placeholder="高(px)" /><select class="param-select" id="resizeFilter"><option value="4">Lanczos3</option><option value="3">Gaussian</option><option value="2">CatmullRom</option><option value="1">Triangle</option><option value="0">Nearest</option></select><button class="tool-btn tool-btn--sm" id="resizeBtn">应用</button></div>
+          <div class="param-row"><span class="param-row__title">📸 缩略图</span><button class="tool-btn tool-btn--sm" data-action="thumbnail200">200px</button><button class="tool-btn tool-btn--sm" data-action="thumbnail400">400px</button><button class="tool-btn tool-btn--sm" data-action="thumbnail800">800px</button></div>
+          <div class="param-row"><span class="param-row__title">✂ 裁剪</span><input type="number" class="param-input param-input--sm" id="cropX" placeholder="X" value="0" /><input type="number" class="param-input param-input--sm" id="cropY" placeholder="Y" value="0" /><input type="number" class="param-input param-input--sm" id="cropW" placeholder="宽" /><input type="number" class="param-input param-input--sm" id="cropH" placeholder="高" /><button class="tool-btn tool-btn--sm" id="cropBtn">裁剪</button></div>
+          <div class="slider-group"><label class="slider-group__label">🔲 马赛克: <span id="pixelateVal">1</span></label><input type="range" class="slider-group__input" id="pixelateSlider" min="1" max="100" value="1" step="1" /></div>
+        </div>
+        <div class="tab-panel" id="panel-adjust">
+          <div class="tools__sliders">
+            <div class="slider-group"><label class="slider-group__label">☀️ 亮度: <span id="brightnessVal">0</span></label><input type="range" class="slider-group__input" id="brightnessSlider" min="-100" max="100" value="0" step="1" /></div>
+            <div class="slider-group"><label class="slider-group__label">🎯 对比度: <span id="contrastVal">0.0</span></label><input type="range" class="slider-group__input" id="contrastSlider" min="-100" max="100" value="0" step="1" /></div>
+          </div>
+        </div>
+        <div class="tab-panel" id="panel-export">
+          <div class="param-row"><span class="param-row__title">📦 格式</span><select class="param-select" id="exportFormat"><option value="0">PNG (无损)</option><option value="1">JPEG (有损)</option><option value="2">WebP</option></select></div>
+          <div class="slider-group" id="exportQualityGroup" style="display:none"><label class="slider-group__label">📊 质量: <span id="exportQualityVal">85</span></label><input type="range" class="slider-group__input" id="exportQualitySlider" min="1" max="100" value="85" step="1" /></div>
+          <div class="tools__grid" style="margin-top:1rem"><button class="tool-btn" id="exportApplyBtn">👁 预览</button><button class="tool-btn tool-btn--download" id="exportDownloadBtn">💾 下载</button></div>
+        </div>
+        <div class="tools__actions"><button class="tool-btn tool-btn--reset" id="resetBtn">🔄 重置</button><button class="tool-btn tool-btn--download" id="downloadBtn">💾 快速下载 PNG</button></div>
+      </section>
+    </div>
+  </main>
+  <footer class="footer"><p>Built with 🦀 Rust + 🕸 WebAssembly + ⚡ Vite</p></footer>
+  <script type="module" src="/src/tools/image.js"></script>
+</body>
+</html>

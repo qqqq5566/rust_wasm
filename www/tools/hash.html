@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>在线哈希计算器 — MD5/SHA256/SHA512/BLAKE3 文件校验</title>
+  <meta name="description" content="免费在线哈希计算器，支持 MD5、SHA-256、SHA-512、BLAKE3。文本和文件均可计算，纯浏览器本地运行，文件不上传服务器。" />
+  <meta name="keywords" content="哈希计算,MD5,SHA256,SHA512,BLAKE3,文件校验,在线哈希" />
+  <link rel="canonical" href="https://image-toolbox.pages.dev/tools/hash.html" />
+  <meta name="robots" content="index, follow" />
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <header class="header">
+    <a href="/" class="back-link">← 返回工具箱</a>
+    <h1 class="header__title">🔐 哈希计算</h1>
+    <p class="header__subtitle">MD5 · SHA-256 · SHA-512 · BLAKE3 · 支持文本和文件</p>
+  </header>
+  <main class="main tool-page">
+    <div class="tool-panel">
+      <div class="param-row">
+        <span class="param-row__title">算法</span>
+        <select class="param-select" id="algoSelect">
+          <option value="sha256">SHA-256（推荐）</option>
+          <option value="blake3">BLAKE3（最快）</option>
+          <option value="md5">MD5</option>
+          <option value="sha512">SHA-512</option>
+        </select>
+      </div>
+      <div class="hash-mode">
+        <button class="tool-btn hash-mode-btn hash-mode-btn--active" data-mode="text">📝 文本输入</button>
+        <button class="tool-btn hash-mode-btn" data-mode="file">📁 文件拖入</button>
+      </div>
+      <textarea class="tool-textarea" id="hashInput" placeholder="输入要计算哈希的文本…" rows="6"></textarea>
+      <div class="hash-file-zone" id="hashFileZone" style="display:none">
+        <div class="upload__zone" id="hashFileDrop" style="padding:2rem"><div class="upload__icon">📁</div><p class="upload__text">拖拽文件到此处计算哈希</p><p class="upload__hint" id="hashFileName"></p></div>
+      </div>
+      <div class="hash-result" id="hashResult">
+        <label class="slider-group__label">计算结果</label>
+        <div class="hash-result__box" id="hashOutput">—</div>
+        <button class="tool-btn tool-btn--sm" id="hashCopyBtn" style="margin-top:0.5rem">📋 复制</button>
+      </div>
+    </div>
+  </main>
+  <footer class="footer"><p>Built with 🦀 Rust + 🕸 WebAssembly</p></footer>
+  <script type="module" src="/src/tools/hash.js"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>在线Base64编解码工具 — 文本/图片Base64互转</title>
+  <meta name="description" content="免费在线Base64编解码工具，支持文本↔Base64互转，自动识别图片Base64并预览。纯浏览器本地运行。" />
+  <meta name="keywords" content="Base64,Base64编码,Base64解码,图片Base64,在线Base64" />
+  <link rel="canonical" href="https://image-toolbox.pages.dev/tools/base64.html" />
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <header class="header">
+    <a href="/" class="back-link">← 返回工具箱</a>
+    <h1 class="header__title">🔢 Base64 编解码</h1>
+  </header>
+  <main class="main tool-page">
+    <div class="tool-panel">
+      <div class="tools__grid">
+        <button class="tool-btn base64-btn base64-btn--active" data-dir="encode">📝 编码 (→Base64)</button>
+        <button class="tool-btn base64-btn" data-dir="decode">🔓 解码 (→文本)</button>
+      </div>
+      <textarea class="tool-textarea" id="base64Input" placeholder="输入文本进行 Base64 编码…" rows="6"></textarea>
+      <textarea class="tool-textarea" id="base64Output" placeholder="结果将显示在这里…" rows="6" readonly></textarea>
+      <div class="base64-preview" id="base64ImagePreview" style="display:none">
+        <label class="slider-group__label">🖼 图片预览</label>
+        <img id="base64PreviewImg" style="max-width:100%;max-height:300px;border-radius:8px" />
+      </div>
+      <div class="tools__grid" style="margin-top:0.5rem">
+        <button class="tool-btn tool-btn--sm" id="base64CopyBtn">📋 复制结果</button>
+      </div>
+    </div>
+  </main>
+  <footer class="footer"><p>Built with 🦀 Rust + 🕸 WebAssembly + ⚡ Vite</p></footer>
+  <script type="module" src="/src/tools/base64.js"></script>
+</body>
+</html>

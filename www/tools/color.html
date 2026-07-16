@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>在线颜色转换器 — HEX/RGB/HSL互转+色块预览</title>
+  <meta name="description" content="免费在线颜色转换工具，支持HEX、RGB、HSL实时互转，色块实时预览。纯浏览器本地运行。" />
+  <meta name="keywords" content="颜色转换,HEX转RGB,RGB转HSL,颜色选择器,在线颜色工具" />
+  <link rel="canonical" href="https://image-toolbox.pages.dev/tools/color.html" />
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <header class="header"><a href="/" class="back-link">← 返回工具箱</a><h1 class="header__title">🎨 颜色转换</h1></header>
+  <main class="main tool-page">
+    <div class="tool-panel">
+      <div class="color-preview" id="colorSwatch"></div>
+      <div class="param-row"><span class="param-row__title">HEX</span><input type="text" class="param-input" id="colorHex" placeholder="#ff6600" value="#ff6600" style="width:120px" /></div>
+      <div class="param-row"><span class="param-row__title">RGB</span><input type="text" class="param-input" id="colorR" placeholder="R" value="255" style="width:60px" /><input type="text" class="param-input" id="colorG" placeholder="G" value="102" style="width:60px" /><input type="text" class="param-input" id="colorB" placeholder="B" value="0" style="width:60px" /></div>
+      <div class="param-row"><span class="param-row__title">HSL</span><input type="text" class="param-input" id="colorH" placeholder="H" value="24" style="width:60px" /><input type="text" class="param-input" id="colorS" placeholder="S%" value="100" style="width:60px" /><input type="text" class="param-input" id="colorL" placeholder="L%" value="50" style="width:60px" /></div>
+      <button class="tool-btn tool-btn--sm" id="colorCopyBtn">📋 复制 HEX</button>
+    </div>
+  </main>
+  <footer class="footer"><p>Built with 🦀 Rust + 🕸 WebAssembly + ⚡ Vite</p></footer>
+  <script type="module" src="/src/tools/color.js"></script>
+</body>
+</html>
