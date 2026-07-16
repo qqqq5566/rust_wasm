@@ -1,12 +1,12 @@
 # Cloudflare Workers + Assets 配置
 # npx wrangler deploy 会读取此文件
 name = "use-tools"
-main = "./www/dist/index.html"       # Worker 入口（占位，实际不需要 Worker 逻辑）
 compatibility_date = "2025-07-15"
 
-# 静态资源部署
+# 纯静态站点，不需要 Worker
 [assets]
 directory = "./www/dist"
+html_handling = "auto-trailing-slash"
 
 # 可选：自定义域名路由
 # [[routes]]
