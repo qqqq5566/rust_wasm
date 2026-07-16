@@ -1,3 +1,5 @@
-// 首页 — 无特殊 JS 逻辑，纯展示工具网格
-// 卡片点击由 <a> 标签原生导航处理
-console.log('🧰 在线工具箱已就绪');
+import { applyI18n, currentLang } from './i18n.js';
+
+// 应用 i18n 文本替换
+applyI18n();
+console.log(`🧰 在线工具箱 — 语言: ${currentLang() === 'zh' ? '中文' : 'English'}`);
