@@ -1,6 +1,6 @@
 # Cloudflare Workers + Assets 配置
 # npx wrangler deploy 会读取此文件
-name = "rust-wasm-toolbox"
+name = "use-tools"
 main = "./www/dist/index.html"       # Worker 入口（占位，实际不需要 Worker 逻辑）
 compatibility_date = "2025-07-15"
 
