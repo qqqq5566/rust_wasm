@@ -23,6 +23,8 @@ $src = "$PSScriptRoot/rust-wasm/pkg"
 $dest = "$PSScriptRoot/www/src/wasm"
 if (Test-Path $dest) { Remove-Item -Recurse -Force $dest }
 Copy-Item -Recurse $src $dest
+# wasm-pack 生成的 .gitignore 内容为 "*"，会阻止 git 提交 WASM 文件
+Remove-Item -Force "$dest/.gitignore" -ErrorAction SilentlyContinue
 Write-Host "✅ WASM 已复制到 www/src/wasm/" -ForegroundColor Green
 Write-Host ""
 

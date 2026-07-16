@@ -1,0 +1,34 @@
+/* tslint:disable */
+/* eslint-disable */
+export const memory: WebAssembly.Memory;
+export const adjust_contrast: (a: number, b: number, c: number) => [number, number, number, number];
+export const blur: (a: number, b: number, c: number) => [number, number, number, number];
+export const brighten: (a: number, b: number, c: number) => [number, number, number, number];
+export const crop: (a: number, b: number, c: number, d: number, e: number, f: number) => [number, number, number, number];
+export const edge_detect: (a: number, b: number) => [number, number, number, number];
+export const emboss: (a: number, b: number) => [number, number, number, number];
+export const encode_as: (a: number, b: number, c: number, d: number) => [number, number, number];
+export const flip_horizontal: (a: number, b: number) => [number, number, number, number];
+export const flip_vertical: (a: number, b: number) => [number, number, number, number];
+export const get_info: (a: number, b: number) => [number, number, number];
+export const grayscale: (a: number, b: number) => [number, number, number, number];
+export const huerotate: (a: number, b: number, c: number) => [number, number, number, number];
+export const invert: (a: number, b: number) => [number, number, number, number];
+export const pixelate: (a: number, b: number, c: number) => [number, number, number, number];
+export const resize: (a: number, b: number, c: number, d: number, e: number) => [number, number, number, number];
+export const rotate: (a: number, b: number, c: number) => [number, number, number, number];
+export const sepia: (a: number, b: number) => [number, number, number, number];
+export const thumbnail: (a: number, b: number, c: number) => [number, number, number, number];
+export const unsharpen: (a: number, b: number, c: number, d: number) => [number, number, number, number];
+export const hash_blake3: (a: number, b: number) => [number, number];
+export const hash_md5: (a: number, b: number) => [number, number];
+export const hash_sha256: (a: number, b: number) => [number, number];
+export const hash_sha512: (a: number, b: number) => [number, number];
+export const main: () => void;
+export const qr_svg: (a: number, b: number, c: number, d: number, e: number, f: number, g: number) => [number, number, number, number];
+export const __wbindgen_free: (a: number, b: number, c: number) => void;
+export const __wbindgen_malloc: (a: number, b: number) => number;
+export const __wbindgen_realloc: (a: number, b: number, c: number, d: number) => number;
+export const __wbindgen_externrefs: WebAssembly.Table;
+export const __externref_table_dealloc: (a: number) => void;
+export const __wbindgen_start: () => void;
