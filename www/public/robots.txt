@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://use-tools.pages.dev/sitemap.xml
+Sitemap: https://use-tools.sendersun912687572.workers.dev/sitemap.xml
