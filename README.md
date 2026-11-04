@@ -1,6 +1,8 @@
 # 🖼 图片处理工具箱 — Rust + WASM + JS
 
-一个完全在浏览器本地运行的图片处理工具，核心算法由 Rust 编写编译为 WebAssembly，前端使用原生 JavaScript + Vite。
+所有处理都在浏览器本地完成的在线工具集，核心算法用 Rust 编译成 WASM，图片不上传服务器。功能有：图片处理（灰度、亮度、对比度、模糊、翻转、旋转）、哈希计算（MD5、SHA-256、SHA-512、BLAKE3）、二维码生成、Base64 和 URL 编解码、UUID、颜色转换、密码生成。按访客国家自动切换中英文。
+技术栈：Rust、wasm-pack、WebAssembly、JavaScript、Vite、Cloudflare Workers。本人独立开发和部署。
+链接：[github.com/rust_wasm](https://github.com/qqqq5566/rust_wasm) ，演示：[use-tools.sendersun912687572.workers.dev](https://use-tools.sendersun912687572.workers.dev/)
 
 ## 功能
 
